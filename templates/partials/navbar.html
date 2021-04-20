@@ -1,0 +1,42 @@
+{#
+##  Copyright 2021 Catgirl.Moe contributors <https://catgirl.moe>
+##
+##  Licensed with GNU Affero General Public License v3.0 or later
+#}
+
+<nav class="bg-dark-700 w-full z-10 flex flex-none flex-nowrap items-center shadow-navbar px-2">
+  <div class="w-1/2 text-light-50">
+    <div class="flex float-left text-light-50 gap-4 h-12">
+      <a class="text-4xl flex items-center" href="/">
+        <i class="mdi mdi-circle-slice-8"></i> <!--TODO: Change this to proper logo-->
+      </a>
+      <a class="flex items-center px-2 border-b-2 mt-0.5 hover:text-accent-300 {% if path.starts_with("/lb") -%}text-accent-300 border-accent-300{% else -%}border-transparent{% endif -%}" href="/lb">
+        <p class="text-sm font-bold hidden md:contents 2xl:text-lg">Leaderboards</p>
+        <i class="text-xl mdi mdi-poll md:hidden"></i> 
+      </a>
+      {% if session.authenticated -%}
+      <a class="flex items-center px-2 border-b-2 mt-0.5 hover:text-accent-300 {% if path.starts_with("/admin") -%}text-accent-300 border-accent-300{% else -%}border-transparent{% endif -%}" href="/admin">
+        <p class="text-sm font-bold hidden md:contents 2xl:text-lg">Admin</p>
+        <i class="text-xl mdi mdi-monitor-dashboard md:hidden"></i>
+      </a>
+      {% endif -%}
+      </div>
+    </div>
+    <div class="w-1/2">
+      <div class="flex float-right">
+        {% if session.authenticated -%}
+        <button x-data="{ open: false }" @click="open = true" @click.away="open = false" class="appearance-none focus:outline-none">
+          <img class="rounded-full h-8 w-8" alt="avatar" src="https://a.{{ config.domain }}/{{ session.user_id }}">
+          <p x-show="open" class="text-light absolute z-20 mt-16">henlo</p>
+        </button> 
+        {% else -%}
+        <a class="rounded bg-dark-500 text-light-50 py-1.5 px-3 hover:bg-dark-400 font-bold text-sm mr-3" href="/login">
+          Log In
+        </a>
+        <a class="rounded bg-accent text-light-50 py-1.5 px-3 hover:bg-accent-800 font-bold text-sm" href="/register">
+          Sign Up
+        </a>
+        {% endif -%}
+      </div>
+    </div>
+  </nav>

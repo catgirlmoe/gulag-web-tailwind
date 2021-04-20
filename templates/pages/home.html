@@ -1,0 +1,44 @@
+{#
+##  Copyright 2021 Catgirl.Moe contributors <https://catgirl.moe>
+##
+##  Licensed with GNU Affero General Public License v3.0 or later
+#}
+
+{% extends "base.html" %}
+
+{% block head %}
+  <title>{{ config.name }}</title>
+  <meta content="{{ config.name }}" property="og:title">
+  <meta content="We are an osu! private server running a custom fork of gulag with many unique features nowhere seen before!" property="og:description">
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-nowrap h-full">
+  <div class="w-full md:w-1/2 flex justify-center text-light-50">
+    <div class="w-2/3 2xl:w-1/2 pt-8 md:pt-0 md:self-center">
+      <div class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold">{{ config.name }}</div>
+      <p class="text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+        We are an osu! private server running a custom fork 
+        of <a class="hover:text-accent-300" href="http://github.com/catgirlmoe/gulag">gulag</a>
+        and <a class="hover:text-accent-300" href="https://github.com/catgirlmoe/nekosu-web">our own frontend</a> with
+        many unique features nowhere seen before!
+      </p>
+      {% if !session.authenticated -%}
+      <div class="pt-2">
+        <a class="rounded bg-dark-600 text-light-50 py-1.5 px-3 hover:bg-dark-500 font-bold text-sm" href="/login">
+          Log In
+        </a>
+        <a class="rounded bg-dark-600 text-light-50 py-1.5 px-3 hover:bg-dark-500 font-bold text-sm ml-2" href="/register">
+          Sign Up
+        </a>
+      </div>
+      {% endif -%}
+    </div>
+  </div>
+  <div class="hidden md:flex w-1/2 justify-center">
+    <div class="w-3/4 self-center">
+      <img src="https://cdn.discordapp.com/attachments/828294322294227004/834013798474055680/megumin_render_by_tuxedoamv_dbh1qkh-fullview.png">
+    </div>
+  </div>
+</div>
+{% endblock %}
