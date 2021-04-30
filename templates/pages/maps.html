@@ -1,0 +1,25 @@
+{#
+##  Copyright 2021 Catgirl.Moe contributors <https://catgirl.moe>
+##
+##  Licensed with GNU Affero General Public License v3.0 or later
+#}
+
+{% extends "base.html" %}
+
+{% block head %}
+  <title>{{ config.name }} | Leaderboards</title>
+  <meta content="{{ config.name }} | test pagination/scroll" property="og:title">
+  <meta content="We are an osu! private server running a custom fork of gulag with many unique features nowhere seen before!" property="og:description">
+  <script src="/assets/js/infiniteScroll.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="flex justify-center h-full w-full py-8">
+  <div x-data="infiniteScroll('/api/maps?sort=plays&limit=100&page=', '#maps-scroll-trigger')" x-init="init()" class="flex flex-wrap justify-center">
+    <template x-for="item in items">
+      <img :src="`https://assets.ppy.sh/beatmaps/${item.set_id}/covers/card.jpg`"/>
+    </template>
+    <button id="maps-scroll-trigger" class="text-accent text-2xl" x-on:click="loadMore()">Load More</button>
+  </div>
+</div>
+{% endblock %}

@@ -6,6 +6,8 @@
 
 use crate::schema::maps::maps;
 use crate::db::conn;
+use crate::qformat;
+use crate::models::QueryFormat;
 
 use diesel::{QueryDsl, RunQueryDsl, ExpressionMethods, result::Error};
 use serde::Serialize;
@@ -38,6 +40,10 @@ pub struct Map {
 }
 
 impl Map {
+  pub fn maps(q: QueryFormat) -> Result<Vec<Self>, Error> {
+    qformat!(maps::table, q, ("plays" => maps::plays)).load::<Self>(&conn())
+  }
+
   pub fn from_id<'a>(id: i32) -> Result<Self, Error> {
     maps::table.find(id).first::<Self>(&conn())
   }

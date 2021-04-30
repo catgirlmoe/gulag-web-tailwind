@@ -11,15 +11,15 @@ use super::*;
 
 
 #[derive(Template)]
-#[template(path = "pages/lbs.html")]
+#[template(path = "pages/maps.html")]
 struct LeadeboardPage<'a> {
   config: &'a Config<'a>,
   session: &'a Session,
   path: &'a str,
 }
 
-#[get("/lbs")]
-async fn lbs(req: HttpRequest) -> HttpResponse {
+#[get("/maps")]
+async fn maps(req: HttpRequest) -> HttpResponse {
   let body = LeadeboardPage {
     config: &CONFIG,
     session: &SESSION,

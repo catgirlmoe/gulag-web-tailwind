@@ -8,6 +8,7 @@ use actix_web::{web, Scope};
 
 mod home;
 mod lbs;
+mod maps;
 
 
 struct Config<'a> {//TODO: replace this with actual config
@@ -34,4 +35,5 @@ pub fn scope() -> Scope {
   web::scope("")
     .service(home::home)
     .service(lbs::lbs)
+    .service(maps::maps)
 } 
