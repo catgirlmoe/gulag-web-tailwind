@@ -18,7 +18,7 @@ struct LeadeboardPage<'a> {
   path: &'a str,
 }
 
-#[get("/lbs")]
+#[get("/lb")]
 async fn lbs(req: HttpRequest) -> HttpResponse {
   let body = LeadeboardPage {
     config: &CONFIG,

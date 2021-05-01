@@ -15,10 +15,12 @@
 
 {% block content %}
 <div class="flex justify-center h-full w-full py-8">
-  <div x-data="infiniteScroll('/api/maps?sort=plays&limit=100&page=', '#maps-scroll-trigger')" x-init="init()" class="flex flex-wrap justify-center">
-    <template x-for="item in items">
-      <img :src="`https://assets.ppy.sh/beatmaps/${item.set_id}/covers/card.jpg`"/>
-    </template>
+  <div x-data="infiniteScroll('/api/maps?sort=plays&limit=100&page=', '#maps-scroll-trigger')" x-init="init()">
+    <div class="flex flex-wrap justify-center">
+      <template x-for="item in items">
+        <img class="h-20 w-72" :src="`https://assets.ppy.sh/beatmaps/${item.set_id}/covers/cover.jpg`"/>
+      </template>
+    </div>
     <button id="maps-scroll-trigger" class="text-accent text-2xl" x-on:click="loadMore()">Load More</button>
   </div>
 </div>
