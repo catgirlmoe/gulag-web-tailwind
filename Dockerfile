@@ -35,11 +35,6 @@ USER nekosu
 EXPOSE 8080
 CMD ["./target/release/nekosu-web"]
 
-RUN mkdir -p ./assets/css/
-#COPY --chown=nekosu:nekosu tailwind.config.js tailwind.config.js
-#RUN npx tailwindcss-cli@latest build -o ./assets/css/tailwind.css
-COPY --chown=nekosu:nekosu --from=tailwind tailwind.css ./assets/css/tailwind.css
-
 # Precompile dependencies
 COPY --chown=nekosu:nekosu Cargo.toml Cargo.toml
 RUN cargo build --release
@@ -50,6 +45,8 @@ RUN rm target/release/deps/nekosu_web*
 
 # Copy over assets
 COPY --chown=nekosu:nekosu assets assets/
+RUN mkdir -p ./assets/css/
+COPY --chown=nekosu:nekosu --from=tailwind tailwind.css ./assets/css/tailwind.css
 
 # Add the source code and build the final project
 COPY --chown=nekosu:nekosu src src

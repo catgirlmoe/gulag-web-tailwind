@@ -16,7 +16,7 @@
 {% block content %}
 <div class="flex justify-center h-full w-full py-8">
   <div class="bg-dark-700 rounded-2xl text-light-50">
-    <div x-data="infiniteScroll('/api/stats/vn/std?sort=pp&limit=3&offset=0&page=', '#lbs-scroll-trigger')" x-init="init()">
+    <div x-data="infiniteScroll('/api/stats/vn/std?sort=pp&limit=15&offset=0&page=', '#lbs-scroll-trigger')" x-init="init()">
       <template x-for="(item, index) in items">
         <tr class="py-2">
           <th class="p-1" x-text="'#' + (index + 1)"></th>
