@@ -5,13 +5,13 @@
 */
 
 use crate::models::users::User;
-use crate::error::NekosuError;
+use crate::error::SeverError;
 
 use actix_web::{get, HttpResponse, web, Scope};
 
 
 #[get("/{user_id}")]
-async fn get(web::Path(user_id): web::Path<i32>) -> Result<HttpResponse, NekosuError> {
+async fn get(web::Path(user_id): web::Path<i32>) -> Result<HttpResponse, SeverError> {
   Ok(HttpResponse::Ok().json(User::find_by_id(user_id)?))
 }
 

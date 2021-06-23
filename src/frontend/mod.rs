@@ -6,10 +6,10 @@
 
 use actix_web::{web, Scope};
 
+
 mod home;
 mod lbs;
 mod maps;
-
 
 struct Config<'a> {//TODO: replace this with actual config
   name: &'a str,

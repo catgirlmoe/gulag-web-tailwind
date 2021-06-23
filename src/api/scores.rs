@@ -5,13 +5,13 @@
 */
 
 use crate::models::scores::Score;
-use crate::error::NekosuError;
+use crate::error::SeverError;
 
 use actix_web::{get, HttpResponse, web, Scope};
 
 
 #[get("/{score_id}")]
-async fn get(web::Path(score_id): web::Path<u64>) -> Result<HttpResponse, NekosuError> {
+async fn get(web::Path(score_id): web::Path<u64>) -> Result<HttpResponse, SeverError> {
   Ok(HttpResponse::Ok().json(Score::from_id(score_id)?))
 }
 
