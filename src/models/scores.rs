@@ -50,15 +50,30 @@ impl Score {
     }
   }
 
-  pub fn map_vn_scores(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
-    qformat!(scores_vn::table.filter(scores_vn::map_md5.eq(map_md5)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  pub fn map_scores_vn_std(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(0)).filter(scores_vn::map_md5.eq(map_md5)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  }
+  pub fn map_scores_vn_taiko(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(1)).filter(scores_vn::map_md5.eq(map_md5)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  }
+  pub fn map_scores_vn_catch(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(2)).filter(scores_vn::map_md5.eq(map_md5)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  }
+  pub fn map_scores_vn_mania(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(3)).filter(scores_vn::map_md5.eq(map_md5)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
   }
 
-  pub fn map_rx_scores(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
-    qformat!(scores_rx::table.filter(scores_rx::map_md5.eq(map_md5)), q, ("pp" => scores_rx::pp, "acc" => scores_rx::acc)).load::<Score>(&conn())
+  pub fn map_scores_rx_std(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_rx::table.filter(scores_rx::mode.eq(0)).filter(scores_rx::map_md5.eq(map_md5)), q, ("pp" => scores_rx::pp, "acc" => scores_rx::acc)).load::<Score>(&conn())
+  }
+  pub fn map_scores_rx_taiko(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_rx::table.filter(scores_rx::mode.eq(1)).filter(scores_rx::map_md5.eq(map_md5)), q, ("pp" => scores_rx::pp, "acc" => scores_rx::acc)).load::<Score>(&conn())
+  }
+  pub fn map_scores_rx_catch(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_rx::table.filter(scores_rx::mode.eq(2)).filter(scores_rx::map_md5.eq(map_md5)), q, ("pp" => scores_rx::pp, "acc" => scores_rx::acc)).load::<Score>(&conn())
   }
 
-  pub fn map_ap_scores(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
-    qformat!(scores_ap::table.filter(scores_ap::map_md5.eq(map_md5)), q, ("pp" => scores_ap::pp, "acc" => scores_ap::acc)).load::<Score>(&conn())
+  pub fn map_scores_ap_std(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_ap::table.filter(scores_ap::mode.eq(0)).filter(scores_ap::map_md5.eq(map_md5)), q, ("pp" => scores_ap::pp, "acc" => scores_ap::acc)).load::<Score>(&conn())
   }
 }
