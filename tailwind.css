@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply rounded py-1.5 px-2.5 font-inter font-semibold text-light;
+    font-size: 0.8125rem;
+  }
+  .button-dark {
+    @apply button bg-dark-2 hover:bg-dark-1;
+  }
+  .button-accent {
+    @apply button bg-accent-3 hover:bg-accent-5;
+  }
+  .text-footer {
+    @apply text-gray hover:text-accent-1;
+  }
+}

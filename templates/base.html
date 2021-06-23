@@ -1,5 +1,5 @@
 {#
-##  Copyright 2021 Catgirl.Moe contributors <https://catgirl.moe>
+##  Copyright 2021 catgirl.moe contributors <https://catgirl.moe>
 ##
 ##  Licensed with GNU Affero General Public License v3.0 or later
 #}
@@ -10,9 +10,9 @@
   {% block head %}{% endblock %}
   {% include "partials/header.html" %}
 </head>
-<body class="flex flex-col h-screen overflow-y-none">
+<body class="flex flex-col h-screen overflow-y-hidden">
   {% include "partials/navbar.html" %}
-  <div class="flex flex-col flex-1 overflow-y-auto bg-dark-800 w-full">
+  <div class="flex flex-col flex-1 bg-dark-5 w-full overflow-y-auto">
     <div class="flex-grow">
       {% block content %}{% endblock %}
     </div>

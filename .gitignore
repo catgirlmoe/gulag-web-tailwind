@@ -12,4 +12,5 @@ Cargo.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/rust
 
-assets/css/tailwind.css
+assets/css/styles.css
+media

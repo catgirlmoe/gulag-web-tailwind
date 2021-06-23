@@ -1,14 +1,17 @@
 ##
-##  Copyright 2021 Catgirl.Moe contributors <https://catgirl.moe>
+##  Copyright 2021 catgirl.moe contributors <https://catgirl.moe>
 ##
 ##  Licensed with GNU Affero General Public License v3.0 or later
 ##
 
 FROM node:alpine as tailwind
 
-COPY tailwind.config.js tailwind.config.js
-RUN npx tailwindcss-cli@latest build -o tailwind.css
+ARG NODE_ENV
 
+COPY tailwind.config.js tailwind.config.js
+COPY tailwind.css tailwind.css
+COPY templates templates
+RUN NODE_ENV=$NODE_ENV npx tailwindcss-cli@latest build -i tailwind.css -o styles.css
 
 FROM rust:slim as builder
 
@@ -46,7 +49,7 @@ RUN rm target/release/deps/nekosu_web*
 # Copy over assets
 COPY --chown=nekosu:nekosu assets assets/
 RUN mkdir -p ./assets/css/
-COPY --chown=nekosu:nekosu --from=tailwind tailwind.css ./assets/css/tailwind.css
+COPY --chown=nekosu:nekosu --from=tailwind styles.css ./assets/css/styles.css
 
 # Add the source code and build the final project
 COPY --chown=nekosu:nekosu src src

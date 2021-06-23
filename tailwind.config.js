@@ -1,61 +1,63 @@
 /*
-//  Copyright 2021 Catgirl.Moe contributors <https://catgirl.moe>
+//  Copyright 2021 catgirl.moe contributors <https://catgirl.moe>
 //
 //  Licensed with GNU Affero General Public License v3.0 or later
 */
 
 module.exports = {
   purge: [
-    "./templates/**/*.hbs"
+    "./templates/**/*.html"
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'poppins': ['Poppins', 'sans-serif']
-      },
-      fontSize: {
-        'huge': '16rem'
-      },
       colors: {
-        'dark': {
-          DEFAULT: '#333333',
-          '50': '#616161',
-          '100': '#5C5C5C',
-          '200': '#525252',
-          '300': '#474747',
-          '400': '#3D3D3D',
-          '500': '#333333',
-          '600': '#292929',
-          '700': '#1F1F1F',
-          '800': '#141414',
-          '900': '#0A0A0A'
-        },
+        'white': '#ffffff',
         'light': {
-          DEFAULT: '#CCCCCC',
-          '50': '#FAFAFA',
-          '100': '#F5F5F5',
-          '200': '#EBEBEB',
-          '300': '#E0E0E0',
-          '400': '#D6D6D6',
-          '500': '#CCCCCC',
-          '600': '#C2C2C2',
-          '700': '#B8B8B8',
-          '800': '#ADADAD',
-          '900': '#A3A3A3'
+          DEFAULT: '#f7f7f7',
+          '1': '#f7f7f7',
+          '2': '#efefef',
+          '3': '#e6e6e6',
+          '4': '#dedede',
+          '5': '#d3d3d3',
         },
+        'gray': {
+          DEFAULT: '#848484',
+          '1': '#c8c8c8',
+          '2': '#adadad',
+          '3': '#848484',
+          '4': '#535353',
+          '5': '#3b3b3b',
+        },
+        'dark': {
+          DEFAULT: '#0e0e0e',
+          '1': '#323232',
+          '2': '#262626',
+          '3': '#1f1f1f',
+          '4': '#181818',
+          '5': '#0e0e0e',
+        },
+        'black': '#000000',
         'accent': {
           DEFAULT: '#E91E63',
-          '50': '#F1729D',
-          '100': '#F06897',
-          '200': '#EE568A',
-          '300': '#ED437D',
-          '400': '#EB3170',
-          '500': '#E91E63',
-          '600': '#DD1659',
-          '700': '#CA1452',
-          '800': '#B8124A',
-          '900': '#A51043'
+          '1': '#ED437D',
+          '2': '#EB3170',
+          '3': '#E91E63',
+          '4': '#DD1659',
+          '5': '#CA1452',
         },
+      },
+      fontFamily: {
+        'inter': ['"Inter"', 'Arial', 'sans-serif'],
+        'roboto': ['"Roboto"', 'Arial', 'sans-serif'],
+      },
+      fontSize: {
+        '1': "0.25rem",
+        '2': "0.5rem",
+        '3': "0.75rem",
+        '3.25': "0.8125rem",
+        '3.5': "0.875rem",
+        '3.75': "0.9375rem",
+        '4': "1rem",
       },
       boxShadow: {
         navbar: "0 1px 2px rgba(0,0,0,0.9),0 0px 2px rgba(0,0,0,0.9)"
