@@ -76,4 +76,32 @@ impl Score {
   pub fn map_scores_ap_std(map_md5: String, q: QueryFormat) -> Result<Vec<Score>, Error> {
     qformat!(scores_ap::table.filter(scores_ap::mode.eq(0)).filter(scores_ap::map_md5.eq(map_md5)), q, ("pp" => scores_ap::pp, "acc" => scores_ap::acc)).load::<Score>(&conn())
   }
+
+
+  pub fn user_scores_vn_std(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(0)).filter(scores_vn::user_id.eq(user_id)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  }
+  pub fn user_scores_vn_taiko(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(1)).filter(scores_vn::user_id.eq(user_id)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  }
+  pub fn user_scores_vn_catch(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(2)).filter(scores_vn::user_id.eq(user_id)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  }
+  pub fn user_scores_vn_mania(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_vn::table.filter(scores_vn::mode.eq(3)).filter(scores_vn::user_id.eq(user_id)), q, ("pp" => scores_vn::pp, "acc" => scores_vn::acc)).load::<Score>(&conn())
+  }
+
+  pub fn user_scores_rx_std(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_rx::table.filter(scores_rx::mode.eq(0)).filter(scores_rx::user_id.eq(user_id)), q, ("pp" => scores_rx::pp, "acc" => scores_rx::acc)).load::<Score>(&conn())
+  }
+  pub fn user_scores_rx_taiko(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_rx::table.filter(scores_rx::mode.eq(1)).filter(scores_rx::user_id.eq(user_id)), q, ("pp" => scores_rx::pp, "acc" => scores_rx::acc)).load::<Score>(&conn())
+  }
+  pub fn user_scores_rx_catch(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_rx::table.filter(scores_rx::mode.eq(2)).filter(scores_rx::user_id.eq(user_id)), q, ("pp" => scores_rx::pp, "acc" => scores_rx::acc)).load::<Score>(&conn())
+  }
+
+  pub fn user_scores_ap_std(user_id: i32, q: QueryFormat) -> Result<Vec<Score>, Error> {
+    qformat!(scores_ap::table.filter(scores_ap::mode.eq(0)).filter(scores_ap::user_id.eq(user_id)), q, ("pp" => scores_ap::pp, "acc" => scores_ap::acc)).load::<Score>(&conn())
+  }
 }
