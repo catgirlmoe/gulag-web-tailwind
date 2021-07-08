@@ -27,7 +27,7 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN USER=root cargo new --bin nekosu_web
 
 # Create user for nekosu-web and chown directory
-RUN addgroup --system --gid 1000 nekosu && adduser --system --uid 1000 --gid 1000 nekosu
+RUN addgroup --system --gid 1003 nekosu && adduser --system --uid 1003 --gid 1003 nekosu
 RUN chown -R nekosu:nekosu /nekosu_web
 
 # Switch to the project directory and user
